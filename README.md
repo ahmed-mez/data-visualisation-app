@@ -1,4 +1,4 @@
-# Data visiualisation app using Flask, Pandas Bokeh and jQuery
+# Data visualisation app using Flask, Pandas Bokeh and jQuery
 
 ### Overview
 The application uses the `hetrec2011-lastfm-2k` dataset to visualize the most used tags for each artist.
