@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Welcome to Deezer Breakfast!</title>
+    <meta charset="utf-8">
+    <link href="static/css/jquery-ui.css" rel="stylesheet">
+    <link href="static/css/bokeh-0.13.0.min.css" rel="stylesheet">
+    <link href="static/css/bokeh-widgets-0.13.0.min.css" rel="stylesheet">
+    <link href="static/css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="static/js/jquery-latest.js"></script>
+    <script type="text/javascript" src="static/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="static/js/bokeh-0.13.0.min.js"></script>
+    <script type="text/javascript" src="static/js/bokeh-widgets-0.13.0.min.js"></script>
+</head>
+
+<center>
+<body>
+    <form method="POST" action="{{ url_for('index') }}" text-align: center>
+    {{ form.artist }}
+    <br>
+    {{ form.max_tags }} {{ form.submit }}
+    <script>
+        $(function () {
+            $.ajax({
+                url: "{{ url_for('autocomplete') }}"
+            }).done(function (data) {
+                $('#artist_autocomplete').autocomplete({
+                    source: function (request, response) {
+                        var results = $.ui.autocomplete.filter(data, request.term);
+                        response(results.slice(0, 20));
+                    },
+                    minLength: 1
+                })
+            });
+        });
+    </script>
+    </form>
+    
+
+    {% if error_msg %}
+
+        {% if error_msg == "invalid artist name" %}
+        <h4>Invalid artist name {{ artist }}, please make sure you select an artist from the suggestions list when typing</h4>
+        {% endif %}
+
+        {% if error_msg == "cannot create graph" %}
+        <h4>An error occured, cannot show graph</h4>
+        {% endif %}
+
+        {% if error_msg == "artist has zero tags" %}
+        <h4>{{ artist }} has zero tags, please select another artist</h4>
+        {% endif %}
+    
+    {% endif %}
+    
+    {% if artist and not error_msg %}
+
+        <h4>Most used tags for <strong>{{ artist }}</strong></h4>
+        {{ div|safe }}
+        {{ script|safe }}
+
+    {% endif %}
+</body>
+</center>
+
+</html>
