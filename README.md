@@ -10,7 +10,7 @@ The application uses Flask and uwsgi as web server, Pandas to read data from csv
 Please note that the application needs improvments as its purpose is to solve a 2-hours technical test for a job interview.
 
 ### Deployment options
-The application can be ran either as a docker container or as a classic Flask application.
+The application can be run either as a docker container or as a classic Flask application.
 
 #### With Docker
 ```
@@ -29,6 +29,7 @@ The application should be running on [localhost:5000](http://localhost:5000)
 #### Example
 ![alt text](examples/example1.jpg)
 ![alt text](examples/example2.jpg)
+![alt text](examples/example3.jpg)
 
 ### TODO
 - [ ] Tests
