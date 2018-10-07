@@ -1,4 +1,4 @@
-# Data visualisation app using Flask, Pandas Bokeh and jQuery
+# Data visualization app using Flask, Pandas, Bokeh and jQuery
 
 ### Overview
 The application uses the `hetrec2011-lastfm-2k` dataset to visualize the most used tags for each artist.
@@ -14,8 +14,8 @@ The application can be ran either as a docker container or as a classic Flask ap
 
 #### With Docker
 ```
-$ docker build -t visualisation-app .
-$ docker run -p 5000:5000 visualisation-app
+$ docker build -t visualization-app .
+$ docker run -p 5000:5000 visualization-app
 ```
 The application should be running on [localhost:5000](http://localhost:5000)
 
